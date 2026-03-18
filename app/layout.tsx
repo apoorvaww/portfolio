@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Roboto } from "next/font/google"
+import { Roboto } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -10,9 +9,9 @@ const inter = Inter({
 });
 
 const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Apoorva's portfolio",
@@ -26,20 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
+      <body
+        suppressHydrationWarning
+        className={`${roboto.className}  antialiased`}
       >
-        
-        <body
-          suppressHydrationWarning
-          className={`${roboto.className}  antialiased`}
-        >
-          {children}
-        </body>
-      </ThemeProvider>
+        {children}
+      </body>
     </html>
   );
 }
