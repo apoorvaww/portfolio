@@ -59,7 +59,8 @@ function RippleCanvas() {
     if (!ctx) return;
 
     const CELL = 40;
-    let cols = 0, rows = 0;
+    let cols = 0,
+      rows = 0;
     let cells: { opacity: number }[] = [];
     let animId: number;
     let intervalId: NodeJS.Timeout;
@@ -170,10 +171,7 @@ function RippleCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full block"
-    />
+    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
   );
 }
 
@@ -182,14 +180,12 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen bg-[#050505] text-white overflow-hidden flex items-center">
-
       {/* Full-section animated ripple grid */}
       <RippleCanvas />
 
       {/* Content — two column, matches screenshot */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-8 md:px-16 py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16">
-
           {/* ── Left ── */}
           <div>
             <p className="text-xs tracking-[0.3em] text-neutral-400 uppercase mb-4">
@@ -211,8 +207,8 @@ export default function Hero() {
             <p className="text-base text-neutral-400 max-w-md leading-relaxed mb-8">
               Building scalable full-stack apps with Next.js &amp; the MERN
               stack, and AI-driven systems using LangChain, vector databases,
-              and LLM pipelines. Currently pursuing B.Tech (CS — AI/ML) at
-              LPU · CGPA 8.89.
+              and LLM pipelines. Currently pursuing B.Tech (CS — AI/ML) at LPU ·
+              CGPA 8.89.
             </p>
 
             {/* Stats */}
@@ -223,7 +219,9 @@ export default function Hero() {
                 { num: "8.89", label: "CGPA" },
               ].map((s) => (
                 <div key={s.label}>
-                  <span className="block text-xl font-bold text-white">{s.num}</span>
+                  <span className="block text-xl font-bold text-white">
+                    {s.num}
+                  </span>
                   <span className="text-sm text-neutral-500">{s.label}</span>
                 </div>
               ))}
@@ -232,13 +230,22 @@ export default function Hero() {
             {/* Buttons */}
             <div className="flex flex-wrap gap-3">
               <Button asChild>
-                <a href="https://github.com/apoorvaww" target="_blank" rel="noreferrer">
+                <a
+                  href="https://github.com/apoorvaww"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="https://linkedin.com/in/apoorva-walia" target="_blank" rel="noreferrer">
+                <a
+                  href="https://linkedin.com/in/apoorva-walia"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-black"
+                >
                   <Linkedin className="mr-2 h-4 w-4" />
                   LinkedIn
                 </a>
@@ -262,7 +269,7 @@ export default function Hero() {
               </div>
 
               <pre className="text-sm text-green-400 leading-relaxed font-mono">
-{`const apoorva = {
+                {`const apoorva = {
   role: "Full-Stack + AI/ML Dev",
   stack: [
     "Next.js", "TypeScript",
@@ -279,7 +286,14 @@ export default apoorva;`}
               <div className="mt-5 h-px w-full bg-linear-to-r from-transparent via-emerald-500/40 to-transparent" />
 
               <div className="mt-4 flex flex-wrap gap-2">
-                {["Next.js","LangChain","Qdrant","Gemini API","PostgreSQL","HuggingFace"].map((tag) => (
+                {[
+                  "Next.js",
+                  "LangChain",
+                  "Qdrant",
+                  "Gemini API",
+                  "PostgreSQL",
+                  "HuggingFace",
+                ].map((tag) => (
                   <span
                     key={tag}
                     className="rounded-full border border-neutral-700 bg-neutral-800 px-3 py-0.5 text-xs text-neutral-300"
@@ -290,7 +304,6 @@ export default apoorva;`}
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

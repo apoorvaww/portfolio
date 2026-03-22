@@ -40,8 +40,6 @@ const infoRows = [
 ];
 
 const hobbies = [
-  "Coding",
-  "Competitive Programming",
   "Reading Tech Blogs",
   "Open Source Contributing",
   "Exploring AI Research",

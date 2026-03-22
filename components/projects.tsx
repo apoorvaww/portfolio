@@ -19,8 +19,8 @@ const projects = [
       "A Retrieval-Augmented Generation pipeline that extracts insights and answers user queries from YouTube video transcripts. Orchestrated with LangChain, semantic embeddings from HuggingFace Sentence Transformers, and Qdrant for vector search.",
     tags: ["Next.js", "LangChain", "Qdrant", "HuggingFace", "RAG"],
     status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://yt-chatbot-chi.vercel.app/",
+    githubUrl: "https://github.com/apoorvaww/yt-chatbot",
   },
   {
     title: "MysteryMsg — Anonymous Messaging Platform.",
@@ -28,8 +28,8 @@ const projects = [
       "A full-stack anonymous messaging platform built with Next.js & TypeScript. Implements NextAuth.js with email verification via Resend, and integrates Google Gemini API to generate AI-powered personalized quick replies.",
     tags: ["Next.js", "NextAuth.js", "Gemini API", "Resend", "ShadCN"],
     status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://mysterymsg-phi.vercel.app/",
+    githubUrl: "https://github.com/apoorvaww/mysterymsg/",
   },
 ];
 
@@ -49,10 +49,8 @@ export default function Projects() {
       id="projects"
       className="relative bg-black text-white overflow-hidden py-24"
     >
-      {/* Top separator */}
       <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-neutral-800 to-transparent" />
 
-      {/* Dot grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
@@ -62,14 +60,11 @@ export default function Projects() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12">
-
-        {/* Section pill */}
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-4 py-1.5 text-sm text-neutral-400">
           <Layers className="h-4 w-4" />
           Projects
         </div>
 
-        {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
           My Projects
         </h2>
@@ -81,14 +76,12 @@ export default function Projects() {
           problem-solving, continuous learning, and shipping real products.
         </p>
 
-        {/* Project card grid — matches reference 3-column layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((p, i) => (
             <div
               key={i}
               className="group flex flex-col rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-neutral-700 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.4)]"
             >
-              {/* Status dot */}
               <div className="mb-4 flex items-center gap-2">
                 <span
                   className={`inline-block h-1.5 w-1.5 rounded-full ${
@@ -104,17 +97,14 @@ export default function Projects() {
                 </span>
               </div>
 
-              {/* Title */}
               <h3 className="text-lg font-semibold text-white leading-snug mb-3">
                 {p.title}
               </h3>
 
-              {/* Description */}
               <p className="text-sm text-neutral-500 leading-relaxed mb-5 flex-1">
                 {p.description}
               </p>
 
-              {/* Tag pills — colorful like reference */}
               <div className="mb-6 flex flex-wrap gap-2">
                 {p.tags.map((tag, j) => (
                   <span
@@ -128,7 +118,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Buttons — "Visit Project" like reference + GitHub */}
               <div className="flex gap-3 mt-auto">
                 <a
                   href={p.liveUrl}
@@ -152,7 +141,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* GitHub CTA */}
         <div className="mt-12 text-center">
           <a
             href="https://github.com/apoorvaww"
