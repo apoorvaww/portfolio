@@ -7,9 +7,7 @@ import { Github, Linkedin, FileText } from "lucide-react";
 // ── Typewriter ────────────────────────────────────────────────────────────────
 const ROLES = [
   "Full-Stack Developer",
-  "AI/ML Engineer",
-  "Next.js Specialist",
-  "LangChain Builder",
+  "Aspiring AI/ML Engineer",
 ];
 
 function useTypewriter(words: string[], speed = 80, pause = 1800) {
