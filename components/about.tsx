@@ -74,7 +74,7 @@ export default function About() {
 
         {/* Large heading with emerald underline */}
         <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-2">
-          Full-Stack Developer &amp; AI/ML Engineer,
+          Full-Stack Developer &amp; AI/ML Engineer
         </h2>
         {/* Underline bar */}
         <div className="mb-8 h-1 w-24 rounded-full bg-emerald-500" />
@@ -87,9 +87,7 @@ export default function About() {
           Next.js, TypeScript, and the MERN stack on the frontend, while on the
           AI side I work with LangChain, vector databases, and LLM pipelines.
           Currently pursuing B.Tech in Computer Science (AI/ML) at Lovely
-          Professional University, Jalandhar — CGPA 8.89. Recognized by Google
-          for the Adversarial Nibbler Project, and an active open-source
-          contributor with 250+ LeetCode problems solved.
+          Professional University, Jalandhar — CGPA 8.89.
         </p>
 
         {/* Info rows — 3 column grid like reference */}

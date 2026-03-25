@@ -187,7 +187,7 @@ export default function Skills() {
 
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
-          My Technical Experience/Skills.
+          My Technical Experience/Skills
         </h2>
         <div className="mb-5 h-1 w-24 rounded-full bg-emerald-500" />
 
