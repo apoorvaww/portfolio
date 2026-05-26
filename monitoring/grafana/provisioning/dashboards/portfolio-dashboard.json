@@ -1,0 +1,75 @@
+{
+  "title": "Portfolio - System Metrics",
+  "uid": "portfolio-system",
+  "version": 1,
+  "schemaVersion": 36,
+  "refresh": "30s",
+  "panels": [
+    {
+      "id": 1,
+      "title": "CPU Usage %",
+      "type": "gauge",
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 8 },
+      "targets": [{
+        "expr": "100 - (avg(irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+        "legendFormat": "CPU %"
+      }],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"] },
+        "thresholds": {
+          "steps": [
+            { "color": "green", "value": null },
+            { "color": "yellow", "value": 60 },
+            { "color": "red", "value": 85 }
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Memory Usage %",
+      "type": "gauge",
+      "gridPos": { "x": 6, "y": 0, "w": 6, "h": 8 },
+      "targets": [{
+        "expr": "(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100",
+        "legendFormat": "Memory %"
+      }],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"] },
+        "thresholds": {
+          "steps": [
+            { "color": "green", "value": null },
+            { "color": "yellow", "value": 70 },
+            { "color": "red", "value": 90 }
+          ]
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Network In/Out (bytes/sec)",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_bytes_total{device!=\"lo\"}[5m])",
+          "legendFormat": "IN - {{device}}"
+        },
+        {
+          "expr": "irate(node_network_transmit_bytes_total{device!=\"lo\"}[5m])",
+          "legendFormat": "OUT - {{device}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Docker Container CPU",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 16, "w": 12, "h": 8 },
+      "targets": [{
+        "expr": "rate(container_cpu_usage_seconds_total{name=~\"portfolio.*\"}[5m]) * 100",
+        "legendFormat": "{{name}}"
+      }]
+    }
+  ]
+}

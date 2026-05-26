@@ -1,0 +1,84 @@
+// jenkins/Jenkinsfile
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE      = "apoorvaww/portfolio"
+        DOCKER_CREDENTIALS = credentials('dockerhub-credentials')   // set in Jenkins
+        KUBECONFIG_FILE   = credentials('kubeconfig')               // set in Jenkins
+        GIT_REPO          = "https://github.com/apoorvaww/portfolio.git"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Cloning repository...'
+                git branch: 'main', url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Install & Build') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'npm ci'
+                echo '🔨 Building Next.js app...'
+                sh 'npm run build'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                echo 'Running ESLint...'
+                sh 'npm run lint || true'    // non-blocking for now
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                echo 'Building Docker image...'
+                sh """
+                    docker build \
+                      -t ${DOCKER_IMAGE}:${BUILD_NUMBER} \
+                      -t ${DOCKER_IMAGE}:latest \
+                      .
+                """
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                echo 'Pushing to DockerHub...'
+                sh """
+                    echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin
+                    docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
+                    docker push ${DOCKER_IMAGE}:latest
+                """
+            }
+        }
+
+	stage('Deploy') {
+    	    steps {
+                sh '''
+            	    docker compose down
+            	    docker compose pull
+            	    docker compose up -d
+        	'''
+    	    }
+	}
+        
+    }
+
+    post {
+        success {
+            echo '🎉 Pipeline succeeded! Portfolio is live.'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check the logs above.'
+        }
+        always {
+            // Clean up local Docker images to save space
+            sh 'docker rmi ${DOCKER_IMAGE}:${BUILD_NUMBER} || true'
+        }
+    }
+}
