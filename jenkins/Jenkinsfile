@@ -5,7 +5,6 @@ pipeline {
     environment {
         DOCKER_IMAGE      = "apoorvaww/portfolio"
         DOCKER_CREDENTIALS = credentials('dockerhub-credentials')   // set in Jenkins
-        KUBECONFIG_FILE   = credentials('kubeconfig')               // set in Jenkins
         GIT_REPO          = "https://github.com/apoorvaww/portfolio.git"
     }
 
